@@ -55,14 +55,14 @@
 
         <div>
         <label for="enterprise">enterprise:</label><br>
-        <select type="text" id="enterprise" name="enterprise"
-            value="<?= isset($_POST['enterprise']) ? htmlspecialchars($_POST['enterprise']) : '' ?>">
+        <select type="text" id="enterprise" name="id_enterprise"
+            value="<?= isset($_POST['id_enterprise']) ? htmlspecialchars($_POST['id_enterprise']) : '' ?>">
             <option value="">--please choose an option---</option>
-            <option value="enterpriseA">enterprise A</option>
-            <option value="enterpriseB">enterprise B</option>
-        <span class="error">
-            <?php if (isset($errors['enterprise'])) {
-                echo $errors['enterprise'];
+            <option value=<?php $enterpriseA ?>> enterprise A</option>
+            <option value=<?php $enterpriseB ?>>enterprise B</option>
+        <span class="error"> 
+            <?php if (isset($errors['id_enterprise'])) {
+                echo $errors['id_enterprise'];
             } ?> 
             </span>
             </select>

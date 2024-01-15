@@ -17,7 +17,7 @@
     echo "<p>Prénom : $prenom</p>";
     echo "<p>Pseudo : $pseudo</p>";
     echo "<p>Email : $email</p>";
-    echo "<p>Entreprise : $entreprise</p>";
+    echo "<p>Entreprise : $id_enterprise</p>";
     echo "<p>Date de naissance : $dob</p>";
     ?>
 

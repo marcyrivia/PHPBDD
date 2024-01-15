@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
 
     // Vérification du nom
-    if (empty($_POST["nom"])) {
+    if (empty($_POST["firstname"])) {
         $errors['firstname'] = "Champs obligatoire.";
     } else if (!preg_match("/^[a-zA-ZÀ-ÿ\-]+$/", $_POST["firstname"])) {
         $errors['firstname'] = "Le nom est invalide.";
@@ -19,16 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verification du select
     // Vérifie si la variable POST 'id_entreprise' est définie et n'est pas vide
-if (isset($_POST['id_$enterprise']) && !empty($_POST['id_$enterprise'])) {
-    $id_enterprise = $_POST['id_$enterprise'];
+if (isset($_POST['id_enterprise']) && !empty($_POST['id_enterprise'])) {
+    $id_enterprise = $_POST['id_enterprise'];
 
     // Vérifie si la valeur est l'une des valeurs attendues
     if ($id_enterprise === "$enterpriseA" || $id_enterprise === "$enterpriseB") {
         // La valeur est valide, vous pouvez faire ce que vous avez besoin de faire avec $id_$enterprise
-        echo "ID de l'$enterprise valide : " . $id_enterprise;
+        echo "ID de l'enterprise valide : " . $id_enterprise;
     } else {
         // La valeur n'est pas valide
-        echo "Valeur de l'ID de l'$enterprise non valide.";
+        echo "Valeur de l'ID de l'enterprise non valide.";
     }
 } else {
     // La variable n'a pas été définie ou est vide
@@ -68,8 +68,8 @@ if (isset($_POST['id_$enterprise']) && !empty($_POST['id_$enterprise'])) {
     // Si aucune erreur détectée
     if (empty($errors)) {
         // Afficher la synthèse des informations et le message de confirmation
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
+        $nom = $_POST['firstname'];
+        $prenom = $_POST['lastname'];
         $email = $_POST['email'];
         $dob = $_POST['dob'];
 
@@ -101,7 +101,7 @@ if (isset($_POST['id_$enterprise']) && !empty($_POST['id_$enterprise'])) {
                $dob = $_POST['dob'];
                $email = $_POST['email'];
                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-               $enterprise =$_POST['id_enterprise'];
+               $id_enterprise =$_POST['id_enterprise'];
         
                $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
                $query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
@@ -109,9 +109,9 @@ if (isset($_POST['id_$enterprise']) && !empty($_POST['id_$enterprise'])) {
                $query->bindValue(':birthdate', $dob, PDO::PARAM_INT);
                $query->bindValue(':email', $email, PDO::PARAM_STR);
                $query->bindValue(':password', $password, PDO::PARAM_STR);
-               $query->bindValue(':id_entreprise', $enterprise, PDO::PARAM_STR);
+               $query->bindValue(':id_entreprise', $id_enterprise, PDO::PARAM_STR);
                $query->bindValue(':valide_participant', 1, PDO::PARAM_STR);
-        
+               $query->execute();
             } catch (PDOException $e){
                 echo "Erreur : " . $e->getMessage();
                 die();

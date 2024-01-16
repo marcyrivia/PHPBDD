@@ -106,23 +106,12 @@ if(empty($errors)){
         $dob = $_POST['dob'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $id_enterprise =$_POST['id_enterprise'];
+        $userValidate = 1;
 
-        utilisateur:create($validateUser, $lastname, $firstname, $email, $dob, $password, $id_enterprise);
         
-        $query->bindValue(':userValidate',1, PDO::PARAM_INT);
-        $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
-        $query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
-        $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
-        $query->bindValue(':email', $email, PDO::PARAM_STR);
-        $query->bindValue(':birthdate', $dob, PDO::PARAM_STR);
-        $query->bindValue(':userPassword', $password, PDO::PARAM_STR);
-        $query->bindValue(':id_enterprise', $id_enterprise, PDO::PARAM_STR);
+        Utilisateur::create($userValidate, $lastname, $firstname, $pseudo, $email, $dob, $password, $id_enterprise);
+        
 
-        $query->execute();
-    } catch (PDOException $e){
-        echo "Erreur : " . $e->getMessage();
-        die();
-    }
 include('../views/view-summary.php');
 exit; // Arrêter l'exécution du script
 }

@@ -17,10 +17,7 @@
 
     <h2>Log in</h2>
 
-
-    <form action="" method="POST" novalidate>
-
-        
+    <form action="controller-signin.php" method="POST" novalidate>
 
         <label for="pseudo">Pseudo: <?php  if(isset($_POST['pseudo'])){
             if (empty($_POST["pseudo"])) {
@@ -30,8 +27,7 @@
 
          ?> 
          </label><br>
-        <input type="text" id="pseudo" name="pseudo" 
-            ?>
+        <input type="text" id="pseudo" name="pseudo" value="<?php $user_pseudo ?>">
         </span><br><br>
 
         <label for="password">Mot de passe: <?php  if(isset($_POST['pseudo'])){
@@ -43,7 +39,7 @@
          ?> 
          </label><br>
         <input type="password" id="password" name="password"
-            value="" ?>
+            value="" >
         </span><br><br>
 
 

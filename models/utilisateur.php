@@ -7,8 +7,11 @@ class user {
      * @param string $lastname Nom de l'utilisateur
      * @param string $firstname Prénom de l'utilisateur
      * @param string $pseudo Pseudo de l'utilisateur
+     * @param string $birthdate Date de naissance de l'utilisateur
      * @param string $email Adresse mail de l'utlisateur
+     * @param string $password Mot de passe de l'utilisateur
      * @param string $id_enterprise Id de l'entreprise de l'utilisateur
+     * @param int @userValidate Validation de l'utilisateursateur
 
      */
 

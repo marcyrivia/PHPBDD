@@ -39,7 +39,7 @@ public function create ( int $userValidate, string $lastname, string $firstname,
 
         $query->execute();
     } catch (PDOException $e){
-        echo "Erreur : " . $e->getMessage();
+        echo "Erreur :" . $e->getMessage();
         die();
     }  
 }

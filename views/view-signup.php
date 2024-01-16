@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../assets/style/style.css">
 </head>
 
 <body>
@@ -98,7 +99,7 @@
         </span><br><br>
 
         <label for="CGU"></label><br>
-        <input type="checkbox" id="CGU" name="CGU"
+        <input  type="checkbox" id="CGU" name="CGU"
             <?= isset($_POST['CGU']) ? "checked"  : '' ?>> Veuillez accepter les CGU
         <span class="error">
             <?php if (isset($errors['CGU'])) {

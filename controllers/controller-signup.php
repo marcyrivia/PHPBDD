@@ -112,6 +112,11 @@ if(empty($errors)){
         Utilisateur::create($userValidate, $lastname, $firstname, $pseudo, $email, $dob, $password, $id_enterprise);
         
 
+
+    } catch (PDOException $e){
+        echo "Erreur : " . $e->getMessage();
+        die();
+    }
 include('../views/view-summary.php');
 exit; // Arrêter l'exécution du script
 }

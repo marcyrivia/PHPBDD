@@ -58,8 +58,8 @@
         <select type="text" id="enterprise" name="id_enterprise"
             value="<?= isset($_POST['id_enterprise']) ? htmlspecialchars($_POST['id_enterprise']) : '' ?>">
             <option value="">--please choose an option---</option>
-            <option value=<?php $enterpriseA ?>> enterprise A</option>
-            <option value=<?php $enterpriseB ?>>enterprise B</option>
+            <option value= "1"> enterprise A</option>
+            <option value= "2">enterprise B</option>
         <span class="error"> 
             <?php if (isset($errors['id_enterprise'])) {
                 echo $errors['id_enterprise'];

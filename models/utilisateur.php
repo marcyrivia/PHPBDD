@@ -1,7 +1,18 @@
 <?php  
 
 class user {
-public function create ( $userValidate, $lastname, $firstname, $pseudo, $password, $email, $dob, $password, $id_enterprise) {
+
+    /**
+     *  Méthode permettant de créer un 
+     * @param string $lastname Nom de l'utilisateur
+     * @param string $firstname Prénom de l'utilisateur
+     * @param string $pseudo Pseudo de l'utilisateur
+     * @param string $email Adresse mail de l'utlisateur
+     * @param string $id_enterprise Id de l'entreprise de l'utilisateur
+
+     */
+
+public function create ( int $userValidate, string $lastname, string $firstname, string $pseudo, string $email, string $dob, string $password, int $id_enterprise) {
     try {
         $dbName = "geralt";
         $dbUser = "geralt";
@@ -12,15 +23,15 @@ public function create ( $userValidate, $lastname, $firstname, $pseudo, $passwor
         $sql = "INSERT INTO `userprofil`(`user_validate`, `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`) VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
 
         $query = $db->prepare($sql);
-        
+
     
-        $query->bindValue(':userValidate',1, PDO::PARAM_INT);
-        $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
-        $query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
-        $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
-        $query->bindValue(':email', $email, PDO::PARAM_STR);
+        $query->bindValue(':userValidate', $userValidate, PDO::PARAM_INT);
+        $query->bindValue(':lastname', htmlspecialchars($lastname), PDO::PARAM_STR);
+        $query->bindValue(':firstname', htmlspecialchars($firstname), PDO::PARAM_STR);
+        $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
+        $query->bindValue(':email', htmlspecialchars($email), PDO::PARAM_STR);
         $query->bindValue(':birthdate', $dob, PDO::PARAM_STR);
-        $query->bindValue(':userPassword', $password, PDO::PARAM_STR);
+        $query->bindValue(':userPassword', password_hash($password), PDO::PARAM_STR);
         $query->bindValue(':id_enterprise', $id_enterprise, PDO::PARAM_STR);
 
         $query->execute();

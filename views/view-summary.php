@@ -24,6 +24,9 @@
     <p>Un email de confirmation a été envoyé à
         <?php echo $email; ?>.
     </p>
+    <div class="connexion">
+    <a href="../controllers/controller-signin.php"><button> Se connecter </button></a>
+</div>
 
 </body>
 

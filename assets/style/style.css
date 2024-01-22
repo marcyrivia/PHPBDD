@@ -69,8 +69,17 @@ input[type="submit"] {
     border-radius: 5px;
 }
 
+
 input[type="submit"]:hover {
     background-color: #5a01a7;
+}
+button{
+    background-color: #4b0971;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
 }
 
 /* Pied de page */

@@ -10,7 +10,8 @@
 
 <header>
     <h2> HOME </h2>
-    <button class="deconnect" > Deconnexion </button>
+    <a class="profil" href="">Profil</a>
+    <a href="../controllers/controller-deconnect.php"><button class="deconnect" > Deconnexion </button></a>
 </header>
  <div class="bienvenue-container">   
 <h1>
@@ -19,7 +20,7 @@
 </div>     
 
 <div class="button">
-    <button>Créer un trajet</button>
+    <a href="../controllers/controller-trajetup.php"><button>Créer un trajet</button></a>
     <button>Modifier un trajet</button>
 </div>
 

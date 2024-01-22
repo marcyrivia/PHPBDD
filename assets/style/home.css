@@ -20,6 +20,11 @@ header {
     justify-content: space-between;
 }
 
+.profil{
+    color: white;
+    
+}
+
 .deconnect{
     margin: 5px;
 

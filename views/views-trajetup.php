@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link rel="stylesheet" href="../assets/style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
 <body>
-
-<!-- Header -->
+    <!-- Header -->
 <header>
 <!-- Votre code pour l'en-tête -->
 </header>
@@ -40,45 +36,40 @@ echo $errors['lastname'];
 <input type="text" id="pseudo" name="pseudo" 
 value="<?= isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : '' ?>">
 <span class="error">
-<?php if (isset($errors['pseudo'])) {
-echo $errors['pseudo'];
-} ?>
+    <?php if (isset($errors['pseudo'])) {
+        echo $errors['pseudo'];
+    } ?>
 </span><br><br>
 
-<label for="email">E-mail:</label><br>
-<input type="email" id="email" name="email"
-value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
+<div>
+<label for="dob">Date de trajet:</label><br>
+<input type="date" id="dot" name="dot"
+value="<?= isset($_POST['dot']) ? htmlspecialchars($_POST['dot']) : '' ?>">
 <span class="error">
-<?php if (isset($errors['email'])) {
-echo $errors['email'];
+<?php if (isset($errors['dot'])) {
+echo $errors['dot'];
 } ?>
-</span><br><br>
+</span><br>
+</div>
 
 <div>
 <label for="enterprise">Entreprise:</label><br>
 <select type="text" id="enterprise" name="id_enterprise"
 value="<?= isset($_POST['id_enterprise']) ? htmlspecialchars($_POST['id_enterprise']) : '' ?>">
 <option value="">--please choose an option---</option>
-<option value= "1"> enterprise A</option>
-<option value= "2">enterprise B</option>
+<option value= "1"> transport A </option>
+<option value= "2">transport B</option>
+<option value= "3">transport C</option>
+<option value= "4">transport D</option>
+<option value= "5">transport E</option>
 <span class="error"> 
-<?php if (isset($errors['id_enterprise'])) {
-echo $errors['id_enterprise'];
+<?php if (isset($errors['transport_id'])) {
+echo $errors['transport_id'];
 } ?> 
 </span>
 </select>
 </div>
 
-<div>
-<label for="dob">Date de naissance:</label><br>
-<input type="date" id="dob" name="dob"
-value="<?= isset($_POST['dob']) ? htmlspecialchars($_POST['dob']) : '' ?>">
-<span class="error">
-<?php if (isset($errors['dob'])) {
-echo $errors['dob'];
-} ?>
-</span><br>
-</div>
 
 <label for="password">Mot de passe:</label><br>
 <input type="password" id="password" name="password"
@@ -98,26 +89,5 @@ echo $errors['confirm_password'];
 } ?>
 </span><br><br>
 
-<label for="CGU"></label><br>
-<input  type="checkbox" id="CGU" name="CGU"
-<?= isset($_POST['CGU']) ? "checked"  : '' ?>> Veuillez accepter les CGU
-<span class="error">
-<?php if (isset($errors['CGU'])) {
-echo $errors['CGU'];
-} ?>
-</span><br><br>
-
-<input type="submit" value="S'enregistrer">
-<a href="../controllers/controller-signin.php"><input value="Se connecter"> </input></a>
-</form>
-
-<!-- Footer -->
-<footer>
-<!-- Votre code pour le pied de page -->
-</footer>
-
-
-
 </body>
-
 </html>

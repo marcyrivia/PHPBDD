@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+$errors = [];
 // Inclusion des fichiers nécessaires
 require_once "../config/config.php"; // Paramètres de configuration de la base de données
 require_once "../models/utilisateur.php"; // Classe Utilisateur
@@ -29,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Utilisation de password_verify pour valider le mot de passe
             if (password_verify($_POST['password'], $UtilisateurInfos['user_password'])) {
+                $_SESSION["user"] = $UtilisateurInfos;
+                unset($_SESSION["user"]["user_password"]);
                 // Si la validation du mot de passe est réussie, redirection vers controller-home.php
                 header('Location: controller-home.php');
             } else {

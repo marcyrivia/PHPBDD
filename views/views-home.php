@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,8 +20,9 @@
 </div>     
 
 <div class="button">
-    <a href="../controllers/controller-trajetup.php"><button>Créer un trajet</button></a>
+    <a href="../controllers/controller-trajet.php"><button>Créer un trajet</button></a>
     <button>Modifier un trajet</button>
+    <a href="../controllers/controller-historique.php"><button>Historique</button></a>
 </div>
 
 

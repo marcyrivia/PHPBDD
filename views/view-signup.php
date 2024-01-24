@@ -61,8 +61,10 @@ value="<?= isset($_POST['id_enterprise']) ? htmlspecialchars($_POST['id_enterpri
 
 <option value="">--please choose an option---</option>
 
-
-<?php foreach ($enterprise as $entreprises) { ?>
+<?php
+var_dump($entreprises);
+?>
+<?php foreach (enterprise::getAll() as $entreprises) { ?>
     <option value="<?= $entreprises["enterprise_id"] ?>">
      <?= $entreprises["enterprise_name"] ?>
     </option>

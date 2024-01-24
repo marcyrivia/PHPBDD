@@ -95,7 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $db = new PDO("mysql:host=localhost;dbname=$dbName", $dbUser,  $dbPassword);
 
                 $enterprise = enterprise::getAll();
-                var_dump($enterprise);
 
                 //stockage de ma requete toujours avant le catch
                 $sql = "INSERT INTO `userprofil`(`user_validate`, `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`) VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";

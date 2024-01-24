@@ -18,6 +18,10 @@ header {
     justify-content: space-between;
 }
 
+h2 {
+    text-align: center;
+    margin: 5px;
+}
 
 .profil{
     color: white;
@@ -25,63 +29,22 @@ header {
     
 }
 
-.deconnect{
-    margin: 5px;
 
-}
-
-h2 {
-    text-align: center;
-    margin: 5px;
-}
-
-button {
+.deconnect {
     background-color: #4b0971;
     color: #fff;
     cursor: pointer;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    margin-top: 10px;
+    margin: 10px;
 }
 
-button:hover {
+.deconnect:hover {
     background-color: #5a01a7;
 }
 
-.bienvenue-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-h1 {
-    text-align: center;
-    margin-top: 20px;
-}
 
-span{
-    text-align: center;
-}
-
-.button {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.button button {
-    background-color: #4b0971;
-    color: #fff;
-    cursor: pointer;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-.button button:hover {
-    background-color: #5a01a7;
-}
 .left{
     display: flex;
     justify-content: center;
@@ -90,5 +53,5 @@ span{
 }
 
 a{
-    margin: 15px;
+    margin-left: 15px;
 }

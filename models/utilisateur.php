@@ -1,6 +1,7 @@
-<?php  
+<?php
 
-class Utilisateur {
+class Utilisateur
+{
 
     /**
      * Méthode permettant de créer un utilisateur
@@ -14,8 +15,9 @@ class Utilisateur {
      * @param string $password       Mot de passe de l'utilisateur
      * @param int    $id_enterprise  Id de l'entreprise de l'utilisateur
      */
-    public static function create(int $userValidate, string $lastname, string $firstname, string $pseudo, string $email, string $dob, string $password, int $id_enterprise) {
-        
+    public static function create(int $userValidate, string $lastname, string $firstname, string $pseudo, string $email, string $dob, string $password, int $id_enterprise)
+    {
+
         try {
             // Les informations de connexion à la base de données
             $dbName = "trajet";
@@ -28,7 +30,7 @@ class Utilisateur {
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Requête SQL d'insertion des données dans la table userprofil
-            $sql = "INSERT INTO `userprofil`(`user_validate`, `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`) VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
+            $sql = "INSERT INTO `userprofil`(`user_validate`, `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`)  VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
 
             // Préparation de la requête
             $query = $db->prepare($sql);
@@ -129,4 +131,3 @@ class Utilisateur {
         }
     }
 }
-?>

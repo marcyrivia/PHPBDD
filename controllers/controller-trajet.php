@@ -11,6 +11,8 @@ session_start();
 
 var_dump($_SESSION);
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $trajet_distance = $_POST["distanceParcourue"];
     $trajet_date = $_POST["dateTrajet"];
@@ -24,6 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Ajoutez une redirection après la création du trajet
     header('Location: ../controllers/controller-historique.php');
+
+
+    
     exit; // Assurez-vous d'utiliser exit() après la redirection pour éviter l'exécution continue du script
 }
 

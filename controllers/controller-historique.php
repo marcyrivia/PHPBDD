@@ -14,7 +14,21 @@ if(!isset($_SESSION["user"])){
 } else if (isset($_SESSION["user"])){
     $user_id = $_SESSION["user"]["user_id"];
     $trajets =  trajet::historique($user_id);
+    // supprimer un trajet
+    
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    
+        if(isset($_POST["delete"])){
+            if($_POST["delete"]=== "delete"){
+                trajet::delete($_POST["ride_id"]);
+                header("Location: controller-historique.php");
+        } else {
+            header("Location: controller-historique.php");
+        }
+    }
+    }
 }
+
 
 
 

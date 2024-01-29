@@ -30,14 +30,12 @@ class Utilisateur
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Requête SQL d'insertion des données dans la table userprofil
-            $sql = "INSERT INTO `userprofil`(`user_validate`, `user_photo`,  `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`)  VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
+            $sql = "INSERT INTO `userprofil`(`user_validate`,  `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`)  VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
 
             // Préparation de la requête
             $query = $db->prepare($sql);
 
             // Liaison des valeurs avec les paramètres de la requête
-            $query->bindValue(':userValidate', $userValidate, PDO::PARAM_INT);
-            $query->bindValue(':profil_picture', $profil_picture, PDO::PARAM_INT);
             $query->bindValue(':lastname', htmlspecialchars($lastname), PDO::PARAM_STR);
             $query->bindValue(':firstname', htmlspecialchars($firstname), PDO::PARAM_STR);
             $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
@@ -130,5 +128,31 @@ class Utilisateur
             echo 'Erreur : ' . $e->getMessage();
             die();
         }
-    } public static function photoprofile(int $profil){}
+    } public static function modifier(int $user_id, string $lastname, string $firstname, string $pseudo, string $email)
+    {
+        try {
+            // Création d'un objet $db selon la classe PDO
+            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
+
+            // stockage de ma requete dans une variable
+            $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo, `user_email` = :email  WHERE `user_id` = :user_id";
+
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
+
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+            $query->bindValue(':lastname', htmlspecialchars($lastname), PDO::PARAM_STR);
+            $query->bindValue(':firstname', htmlspecialchars($firstname), PDO::PARAM_STR);
+            $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
+            $query->bindValue(':email', htmlspecialchars($email), PDO::PARAM_STR);
+            
+
+            // on execute la requête
+            $query->execute();
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
 }

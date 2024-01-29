@@ -23,8 +23,11 @@
     foreach ($trajets as $trajet) {
         echo "<p> Date du trajet : " . $trajet["ride_date"] . "</p>";
         echo "<p> Distance du trajet : " . $trajet["ride_distance"] . "</p>";
-        echo "<p> Transport : " . $trajet["transport_type"] . "</p>"; ?>
-        <button class="deleteButton"> <i class="bi bi-trash-fill"></i> </button>
+        echo "<p> Transport : " . $trajet["transport_type"] . "</p>"; 
+       echo '<form action="" method="post" onsubmit="return confirm(\'Voulez-vous supprimer le trajet? (La suppression sera effectuée même en cliquant sur Annuler\')">';
+        echo '    <input type="hidden" name="ride_id" value="' . $trajet['ride_id'] . '">';
+         echo '    <input type="submit" name="delete" value="delete">';
+         echo '</form>';?>
         <?php
         echo "<hr>";
     }

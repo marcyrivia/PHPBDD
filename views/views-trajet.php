@@ -10,7 +10,7 @@
 
 <header>
         <div class="left">
-            <h2> HOME </h2>
+        <a href="../controllers/controller-home.php"> <h2> HOME </h2></a>
             <a class="profil" href="../controllers/controller-profil.php">Profil</a>
         </div>
         <a href="../controllers/controller-deconnect.php"><button class="deconnect"> Deconnexion </button></a>

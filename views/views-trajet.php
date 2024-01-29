@@ -8,6 +8,13 @@
 </head>
 <body>
 
+<header>
+        <div class="left">
+            <h2> HOME </h2>
+            <a class="profil" href="../controllers/controller-profil.php">Profil</a>
+        </div>
+        <a href="../controllers/controller-deconnect.php"><button class="deconnect"> Deconnexion </button></a>
+    </header>
 
     <div class="container">
     <form class="formTrajet" action="../controllers/controller-trajet.php" method="post" enctype="multipart/form-data">

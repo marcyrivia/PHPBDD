@@ -23,6 +23,7 @@
 
     <div class="profil-container">
         <h1><?= $pseudo ?></h1>
+        <img src="../assets/img/ <?= $profilepicture ?>" alt="">
         <li><?= $firstname ?></li>
         <li><?= $lastname ?></li>
         <li><?= $id_enterprise ?></li>

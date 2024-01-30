@@ -16,6 +16,7 @@ if (isset($_SESSION['user'])) {
     $email = $_SESSION['user']['user_email'];
     $dob = $_SESSION['user']['user_dateofbirth'];
 
+
 }
     //modifer le profil
     // if ($_SERVER["REQUEST_METHOD"] == "POST") {

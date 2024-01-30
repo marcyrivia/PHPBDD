@@ -128,14 +128,14 @@ class Utilisateur
             echo 'Erreur : ' . $e->getMessage();
             die();
         }
-    } public static function modifier(int $user_id, string $lastname, string $firstname, string $pseudo, string $email)
+    } public static function modifier(int $user_id, string $lastname, string $firstname, string $pseudo, string $email, string $profilepicture)
     {
         try {
             // Création d'un objet $db selon la classe PDO
             $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
 
             // stockage de ma requete dans une variable
-            $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo, `user_email` = :email, WHERE `user_id` = :user_id";
+            $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo, `user_photo` = :user_photo, `user_email` = :email WHERE `user_id` = :user_id";
 
             // je prepare ma requête pour éviter les injections SQL
             $query = $db->prepare($sql);
@@ -146,7 +146,7 @@ class Utilisateur
             $query->bindValue(':firstname', htmlspecialchars($firstname), PDO::PARAM_STR);
             $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
             $query->bindValue(':email', htmlspecialchars($email), PDO::PARAM_STR);
-            // $query->bindValue(':email', htmlspecialchars($password), PDO::PARAM_STR);
+            $query->bindValue(':user_photo', htmlspecialchars($profilepicture), PDO::PARAM_STR);
             
 
             // on execute la requête
@@ -157,23 +157,25 @@ class Utilisateur
         }
     }
 
-    public static function addPhoto(int $user_id, string $profilepicture)
-    {
-        try {
-            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
-            // Paramétrage des erreurs PDO pour les afficher en cas de problème
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // public static function addPhoto(int $user_id, string $profilepicture)
+    // {
+    //     try {
+    //         $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
+    //         // Paramétrage des erreurs PDO pour les afficher en cas de problème
+    //         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $requete = $db->prepare("UPDATE `userprofil` SET `user_photo` = :user_photo WHERE `user_id` = :user_id");
+    //         $sql = "UPDATE `userprofil` SET `user_photo` = :user_photo WHERE `user_id` = :user_id";
 
-            $requete->bindValue(':user_photo', $profilepicture, PDO::PARAM_STR);
-            $requete->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+    //         $query = $db->prepare($sql);
 
-            $requete->execute();
+    //         $query->bindValue(':user_photo', $profilepicture, PDO::PARAM_STR);
+    //         $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 
-        } catch (PDOException $e) {
-            echo 'Erreur : ' . $e->getMessage();
-            return false;
-        }
-    }
+    //         $query->execute();
+
+    //     } catch (PDOException $e) {
+    //         echo 'Erreur : ' . $e->getMessage();
+    //         return false;
+    //     }
+    // }
 }

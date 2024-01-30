@@ -8,6 +8,7 @@ session_start();
 
 var_dump($_SESSION);
 var_dump($_FILES);
+
 if (!isset($_SESSION["user"])) {
     // Si l'utilisateur n'est pas connecté, on le renvoie vers la page de connexion 
     header("Location: ../controller-signin.php");
@@ -21,11 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstname = $_POST["firstname"];
     $pseudo = $_POST["pseudo"];
     $email = $_POST["email"];
+    $profilepicture = $_FILES["User_Photo"]["name"];
     // $password = $_POST["password"];
 
     // Mettez à jour le profil
     
-    Utilisateur::modifier($user_id, $lastname, $firstname, $pseudo, $email);
+    Utilisateur::modifier($user_id, $lastname, $firstname, $pseudo, $email, $profilepicture);
 
 
     $_SESSION['user']['user_name'] = $lastname;
@@ -43,18 +45,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $user_id = $_SESSION["user"]["user_id"];  
-    $profilepicture = $_FILES["profilepicture"];
-    // $password = $_POST["password"];
+//     $user_id = $_SESSION["user"]["user_id"];  
+//     $profilepicture = $_FILES["profilepicture"]["name"];
+//     // $password = $_POST["password"];
 
-    // Mettez à jour le profil
+//     // Mettez à jour le profil
     
-    Utilisateur::addPhoto($user_id, $profilepicture);
+//     Utilisateur::addPhoto($user_id, $profilepicture);
 
 
-    $_SESSION['user']['user_name'] = $lastname;
+//     // $_FILES['user']['user_photo'] = $profilepicture;
     
 
 
@@ -62,9 +64,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    header ("Location: controller-profil.php");
-    exit();
-}
+//     header ("Location: controller-profil.php");
+//     exit();
+// }
 
 
 

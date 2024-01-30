@@ -9,7 +9,7 @@ session_start();
 // $transportid = 0;
 // $userid = 0;
 
-var_dump($_SESSION);
+
 
 
 

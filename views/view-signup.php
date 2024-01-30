@@ -118,10 +118,12 @@ echo $errors['CGU'];
 </span><br><br>
 
 <input type="submit" value="S'enregistrer">
-<!-- <a href="../controllers/controller-signin.php">-->
-    <input value="Se connecter"> </input>
-</form>
 
+</form>
+<div class="popo">
+    <p class="signp">Vous avez déjà un compte ? </p>
+<a href="../controllers/controller-signin.php"><input class="signin" type="submit" value="Se connecter"> </input></a>
+</div>
 <!-- Footer -->
 <footer>
 <!-- Votre code pour le pied de page -->

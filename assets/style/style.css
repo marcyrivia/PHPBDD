@@ -93,3 +93,26 @@ footer {
     width: 100%;
 }
 
+.popo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin-left: 36rem;
+    flex-direction: column;
+}
+
+.signin{
+    background-color: #4b0971;
+    color: #fff;
+    margin: 25px;
+    width: 75%;
+    cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.signp{
+    font-weight: bold;
+}

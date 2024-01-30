@@ -19,6 +19,8 @@
 
 
 <div class="historique-container">
+    <h1> Historique des trajets</h1>
+    <hr>
     <?php
     foreach ($trajets as $trajet) {
         echo "<p> Date du trajet : " . $trajet["ride_date"] . "</p>";

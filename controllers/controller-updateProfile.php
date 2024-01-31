@@ -21,7 +21,7 @@ if (!isset($_SESSION["user"])) {
 
 
 
-        $target_dir = "../assets/image/";
+        $target_dir = "../assets/img/";
         $target_file = $target_dir . basename($_FILES["User_Photo"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -71,7 +71,7 @@ if (!isset($_SESSION["user"])) {
     
         $profilepicture = $_FILES["User_Photo"]["name"];
       } else {
-        $profilepicture =  $_SESSION["user"]["User_Photo"];
+        $profilepicture =  $_SESSION["user"]["user_photo"];
       }
     
       $user_id = $_SESSION["user"]["user_id"];
@@ -83,7 +83,7 @@ if (!isset($_SESSION["user"])) {
     
       // Mettez à jour le profil
     
-      Utilisateur::modifier($user_id, $lastname, $firstname, $pseudo, $describ, $email, $profilepicture, $entreprise);
+      Utilisateur::modifier($user_id, $lastname, $firstname, $pseudo, $email, $profilepicture);
 
       $_SESSION["user"] = Utilisateur::getInfos($pseudo);
     

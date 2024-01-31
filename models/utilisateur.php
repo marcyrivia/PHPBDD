@@ -135,7 +135,7 @@ class Utilisateur
             $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
 
             // stockage de ma requete dans une variable
-            $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo, `user_photo` = :user_photo, `user_email` = :email WHERE `user_id` = :user_id";
+            $sql = "UPDATE `userprofil` SET `user_name` = :lastname, `user_firstname` = :firstname, `user_pseudo` = :pseudo, `user_photo` = :profilepicture, `user_email` = :email WHERE `user_id` = :user_id";
 
             // je prepare ma requête pour éviter les injections SQL
             $query = $db->prepare($sql);
@@ -146,7 +146,7 @@ class Utilisateur
             $query->bindValue(':firstname', htmlspecialchars($firstname), PDO::PARAM_STR);
             $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
             $query->bindValue(':email', htmlspecialchars($email), PDO::PARAM_STR);
-            $query->bindValue(':user_photo', htmlspecialchars($profilepicture), PDO::PARAM_STR);
+            $query->bindValue(':profilepicture', htmlspecialchars($profilepicture), PDO::PARAM_STR);
             
 
             // on execute la requête

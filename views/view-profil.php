@@ -22,8 +22,10 @@
     <a href="../controllers/controller-updateProfile.php"><button id="editButton">Modifier le profil</button></a>
 
     <div class="profil-container">
-        <h1><?= $pseudo ?></h1>
-        <img src="../assets/img/ <?= $profilepicture ?>" alt="">
+        <div class="picture-container">
+            <h1><?= $pseudo ?></h1>
+            <li><img src="../assets/img/<?= $profilepicture ?>" alt=""></li>
+        </div>
         <li><?= $firstname ?></li>
         <li><?= $lastname ?></li>
         <li><?= $id_enterprise ?></li>

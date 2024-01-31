@@ -7,34 +7,87 @@ require_once "../models/utilisateur.php";
 session_start();
 
 var_dump($_SESSION);
-var_dump($_FILES);
 
 if (!isset($_SESSION["user"])) {
-    // Si l'utilisateur n'est pas connecté, on le renvoie vers la page de connexion 
-    header("Location: ../controller-signin.php");
+  // Si l'utilisateur n'est pas connecté, on le renvoie vers la page de connexion 
+  header("Location: ../controller-signin.php");
     exit();
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $user_id = $_SESSION["user"]["user_id"];  
-    $lastname = $_POST["lastname"];
-    $firstname = $_POST["firstname"];
-    $pseudo = $_POST["pseudo"];
-    $email = $_POST["email"];
-    $profilepicture = $_FILES["User_Photo"]["name"];
-    // $password = $_POST["password"];
-
-    // Mettez à jour le profil
+  }
+  
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    Utilisateur::modifier($user_id, $lastname, $firstname, $pseudo, $email, $profilepicture);
+      
+    if ($_FILES["User_Photo"]['error'] == 0) {
 
 
-    $_SESSION['user']['user_name'] = $lastname;
-    $_SESSION['user']['user_firstname'] = $firstname;
-    $_SESSION['user']['user_pseudo'] = $pseudo;
-    $_SESSION['user']['user_email'] = $email;
-    // $_SESSION['user']['user_password'] = $password;
+
+        $target_dir = "../assets/image/";
+        $target_file = $target_dir . basename($_FILES["User_Photo"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    
+        // Check if image file is a actual image or fake image
+        if (isset($_POST["submit"])) {
+          $check = getimagesize($_FILES["User_Photo"]["tmp_name"]);
+          if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+          } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+          }
+        }
+    
+        // Check if file already exists
+        if (file_exists($target_file)) {
+          echo "Sorry, file already exists.";
+          $uploadOk = 0;
+        }
+    
+        // Check file size
+        if ($_FILES["User_Photo"]["size"] > 500000) {
+          echo "Sorry, your file is too large.";
+          $uploadOk = 0;
+        }
+    
+        // Allow certain file formats
+        $allowedExtensions = array("jpg", "jpeg", "png", "gif");
+        if (!in_array($imageFileType, $allowedExtensions)) {
+          echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+          $uploadOk = 0;
+        }
+    
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+          echo "Sorry, your file was not uploaded.";
+          // if everything is ok, try to upload file
+        } else {
+          if (move_uploaded_file($_FILES["User_Photo"]["tmp_name"], $target_file)) {
+            echo "The file " . htmlspecialchars(basename($_FILES["User_Photo"]["name"])) . " has been uploaded.";
+          } else {
+            echo "Sorry, there was an error uploading your file.";
+          }
+        }
+    
+        $profilepicture = $_FILES["User_Photo"]["name"];
+      } else {
+        $profilepicture =  $_SESSION["user"]["User_Photo"];
+      }
+    
+      $user_id = $_SESSION["user"]["user_id"];
+      $lastname = $_POST["lastname"];
+      $firstname = $_POST["firstname"];
+      $pseudo = $_POST["pseudo"];
+      $email = $_POST["email"];
+    
+    
+      // Mettez à jour le profil
+    
+      Utilisateur::modifier($user_id, $lastname, $firstname, $pseudo, $describ, $email, $profilepicture, $entreprise);
+
+      $_SESSION["user"] = Utilisateur::getInfos($pseudo);
+    
+
 
 
 
@@ -56,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //     Utilisateur::addPhoto($user_id, $profilepicture);
 
 
-//     // $_FILES['user']['user_photo'] = $profilepicture;
+//     // $_FILES['user']['User_Photo'] = $profilepicture;
     
 
 

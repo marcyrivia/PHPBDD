@@ -9,7 +9,7 @@ session_start();
 if (isset($_SESSION['user'])) {
     $user_id = $_SESSION['user']['user_id'];
     $id_enterprise = $_SESSION['user']['enterprise_id'];
-    $profil_picture = $_SESSION['user']['user_photo'];
+    $profilepicture = $_SESSION['user']['user_photo'];
     $pseudo = $_SESSION['user']['user_pseudo'];
     $lastname = $_SESSION['user']['user_name'];
     $firstname = $_SESSION['user']['user_firstname'];
@@ -18,6 +18,8 @@ if (isset($_SESSION['user'])) {
 
 
 }
+
+
     //modifer le profil
     // if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     $user_id = $_SESSION['user']['user_id'];

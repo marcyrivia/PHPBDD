@@ -1,27 +1,23 @@
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
+body{
     line-height: 1.6;
-    background: rgb(29, 0, 60);
-    background: linear-gradient(90deg, rgba(29, 0, 60, 1) 30%, rgba(60, 3, 113, 1) 61%, rgba(90, 1, 167, 1) 89%);
+    background-color: #fff;
     color: #fff;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
+
 
 h2 {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
+    color: #06BF09;
 }
 
 
@@ -33,6 +29,7 @@ form {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 
@@ -47,7 +44,7 @@ select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid black;
     border-radius: 3px;
 }
 
@@ -56,16 +53,18 @@ select {
 }
 
 input[type="submit"] {
-    background-color: #4b0971;
+    background-color: #06BF09;
     color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     cursor: pointer;
     padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 input[type="submit"]:hover {
-    background-color: #5a01a7;
+    background-color : #fff;
+    color: #06BF09;
 }
 
 footer {
@@ -76,4 +75,8 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+p{
+    color: #06BF09;
 }

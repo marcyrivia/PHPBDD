@@ -11,10 +11,6 @@
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <!-- Votre code pour l'en-tête -->
-    </header>
 
     <h2>Log in</h2>
 

@@ -10,10 +10,19 @@
 
 <header>
         <div class="left">
-        <a href="../controllers/controller-home.php"> <h2> HOME </h2></a>
-            <a class="profil" href="../controllers/controller-profil.php">Profil</a>
+        <a href="../controllers/controller-home.php"> <h2 class="home" > HOME </h2></a>
         </div>
-        <a href="../controllers/controller-deconnect.php"><button class="deconnect"> Deconnexion </button></a>
+            <div class="menu-icon"> 
+                <i class="bi bi-list"></i> 
+            </div>
+            <div class="overlay"></div>
+        <nav class="menu">
+            <ul class="menu-list">
+                <li><a href="../controllers/controller-profil.php">Profil</a></li>
+                <li><a href="../controllers/controller-deconnect.php"> Deconnexion </a></li>
+            </ul>
+        </nav>
+    
     </header>
 
     <div class="container">

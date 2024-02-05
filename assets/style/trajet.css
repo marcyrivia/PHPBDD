@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'moonChild';
+    src: url('../fonts/Moonchild2.ttf') format('truetype');
+    /* Autres propriétés facultatives */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 /* Reset des styles par défaut */
 * {
     margin: 0;
@@ -7,47 +17,56 @@
 
 /* Style de base pour le corps de la page */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background: rgb(29, 0, 60);
-    background: linear-gradient(90deg, rgba(29, 0, 60, 1) 30%, rgba(60, 3, 113, 1) 61%, rgba(90, 1, 167, 1) 89%);
+    background-color: #fff;
     color: #fff;
 }
 
 /* En-tête */
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-
-.profil{
-    color: white;
-    text-decoration: none;
-    
+.home{
+    font-family: 'moonChild';
+    color: #06BF09;
+    font-size: 4rem;
+    margin-left: 1.5rem;
 }
 
-.deconnect{
-    margin: 5px;
-
+.nav-icon{
+    position: fixed;
+    color: #06BF09;
+    top: 100px;
+    font-size: 3rem;
+    z-index: 999;
+    cursor: pointer;
 }
-
 /* Section trajet */
 h2 {
     text-align: center;
     margin-top: 20px;
 }
+a{
+    text-decoration: none;
+}
+
 
 .container {
-    max-width: 600px;
+    max-width: 400px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 5px;
-    color: #333;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .label {
@@ -71,16 +90,18 @@ select {
 
 /* Bouton d'enregistrement */
 input[type="submit"], button {
-    background-color: #4b0971;
+    background-color: #06BF09;
     color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 input[type="submit"]:hover, button:hover {
-    background-color: #5a01a7;
+    background-color : #fff;
+    color: #06BF09;
 }
 
 /* Pied de page */

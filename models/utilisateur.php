@@ -30,12 +30,13 @@ class Utilisateur
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Requête SQL d'insertion des données dans la table userprofil
-            $sql = "INSERT INTO `userprofil`(`user_validate`,  `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`)  VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
+            $sql = "INSERT INTO `userprofil`(`user_validate`,  `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`)  VALUES (:user_validate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
 
             // Préparation de la requête
             $query = $db->prepare($sql);
 
             // Liaison des valeurs avec les paramètres de la requête
+            $query->bindValue(':user_validate',intval($userValidate), PDO::PARAM_INT);
             $query->bindValue(':lastname', htmlspecialchars($lastname), PDO::PARAM_STR);
             $query->bindValue(':firstname', htmlspecialchars($firstname), PDO::PARAM_STR);
             $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);

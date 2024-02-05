@@ -4,6 +4,8 @@ require_once '../config/config.php';
 require_once '../models/utilisateur.php';
 require_once '../models/enterprise.php';
 // Vérification des données postées depuis le formulaire
+
+var_dump($_POST);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
 
@@ -89,17 +91,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($errors)) {
             // Instance d'une PDO 
             try {
-                $dbName = "trajet";
-                $dbUser = "geralt";
-                $dbPassword = "am12ine34";
-                $db = new PDO("mysql:host=localhost;dbname=$dbName", $dbUser,  $dbPassword);
+               
 
                 $enterprise = enterprise::getAll();
-
-                //stockage de ma requete toujours avant le catch
-                $sql = "INSERT INTO `userprofil`(`user_validate`, `user_name`, `user_firstname`, `user_pseudo`, `user_email`, `user_dateofbirth`, `user_password`, `enterprise_id`) VALUES (:userValidate, :lastname, :firstname, :pseudo, :email, :birthdate, :userPassword, :id_enterprise)";
-
-                $query = $db->prepare($sql);
 
                 $lastname = htmlspecialchars($_POST['lastname']);
                 $firstname = htmlspecialchars($_POST['firstname']);
@@ -109,7 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $password = $_POST['password'];
                 $id_enterprise = $_POST['id_enterprise'];
                 $userValidate = 1;
-
 
                 Utilisateur::create($userValidate, $lastname, $firstname, $pseudo, $email, $dob, $password, $id_enterprise);
             } catch (PDOException $e) {

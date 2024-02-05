@@ -108,9 +108,10 @@ echo $errors['confirm_password'];
 } ?>
 </span><br><br>
 
+<p class="cguP">Veuillez accepter les CGU</p>
 <label for="CGU"></label><br>
 <input  type="checkbox" id="CGU" name="CGU"
-<?= isset($_POST['CGU']) ? "checked"  : '' ?>> Veuillez accepter les CGU
+<?= isset($_POST['CGU']) ? "checked"  : '' ?>> 
 <span class="error">
 <?php if (isset($errors['CGU'])) {
 echo $errors['CGU'];

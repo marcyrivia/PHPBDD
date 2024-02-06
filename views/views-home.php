@@ -15,25 +15,35 @@
         <div class="left">
         <a href="../controllers/controller-home.php"> <h2 class="home" > HOME </h2></a>
         </div>
-            <div class="menu-icon"> 
-                <i class="bi bi-list"></i> 
+        <nav class="menu open">
+            <div class="close" onclick="closeMenuMobile()">
+                <i class="bi bi-x closeI"></i>
             </div>
-            <div class="overlay"></div>
-        <nav class="menu">
-            <ul class="menu-list">
+             <ul class="menu-list">
                 <li><a href="../controllers/controller-profil.php">Profil</a></li>
+                <li class="onglet-li"><a href="../controllers/controller-trajet.php">Créer un trajet</a></li>
+                <li class="onglet-li"><a href="../controllers/controller-historique.php">Historique</a></li>
                 <li><a href="../controllers/controller-deconnect.php"> Deconnexion </a></li>
             </ul>
-        </nav>
+        </nav> 
+        
+            <div class="menu-icon" onclick="openMenuMobile()"> 
+                <i class="bi bi-list burger"></i> 
+            </div>
     
     </header>
     <div class="bienvenue-container">
         <h1 class="welcome"> Bienvenue, </h1>
           <h1 class="pseudo"> <?php echo $pseudo ?></h1> 
         <span> <?php echo $date ?></span>
+        <div class="bouton">
+            <a href="../controllers/controller-trajet.php"> <button class="btn">Ajouter un trajet</button> </a>
+        <a href="../controllers/controller-historique.php"> <button class="btn">Historique</button> </a>
+        </div>
     </div>
 
     <div class="container">
+    
     <a href="../controllers/controller-trajet.php"> <div class="onglets-container">
         <h2 class="onglet-name">Créer un trajet</h2> 
         <i class="bi bi-node-plus-fill onglet-i"></i>
@@ -44,6 +54,16 @@
         <i class="bi bi-stopwatch onglet-i "></i>
         </div> </a>
     </div>
+
+    <script>
+        function openMenuMobile() {
+            document.querySelector(".menu").classList.add("open")
+            
+        }
+        function closeMenuMobile() {
+    document.querySelector(".menu").classList.remove("open");
+}
+    </script>
 
 
 

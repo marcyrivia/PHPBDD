@@ -55,14 +55,14 @@ a{
     color: #06BF09;
 }
 
-li{
+.li{
     color: #06BF09;
     font-weight: bold;
     list-style: none;
     position: relative;
 }
 
-li:after{
+.li:after{
     content: "";
     height: 2px;
     background-color: #06BF09;
@@ -73,7 +73,7 @@ li:after{
     transition: 0.2s all ease-in-out;
 }
 
-li:hover:after{
+.li:hover:after{
     width: 100%;
     left: 0;
 }
@@ -242,16 +242,16 @@ a{
         font-size: 40px;
         position: absolute;
         top: 16px;
-        right: 16px;
+        right: 25px;
 
     }
     
-    li{
+    .li{
         font-size: 25px;
         position: relative;
     }
 
-    li:after {
+    .li:after {
         content: "";
         height: 2px;
         background-color: #06BF09;
@@ -262,7 +262,7 @@ a{
         transition: 0.2s all ease-in-out;
     }
 
-    li:hover:after {
+    .li:hover:after {
         width: 100% !important; /* Ajoutez !important ici */
         left: 0;
     }

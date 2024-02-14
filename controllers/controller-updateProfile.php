@@ -6,7 +6,6 @@ require_once "../models/utilisateur.php";
 
 session_start();
 
-var_dump($_SESSION);
 
 if (!isset($_SESSION["user"])) {
   // Si l'utilisateur n'est pas connecté, on le renvoie vers la page de connexion 

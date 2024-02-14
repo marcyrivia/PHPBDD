@@ -42,6 +42,9 @@
         <li><?= $email ?></li>
         <li><?= $dob ?></li>
         <a href="../controllers/controller-updateProfile.php"><button id="editButton">Modifier le profil</button></a>
+        <form method="post" action="../controllers/controller-profil.php">
+            <button type="submit" name="delete" value="delete">Supprimer le profil</button>
+        </form>
         </div>
 </div>
 

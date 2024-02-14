@@ -19,6 +19,16 @@ if (isset($_SESSION['user'])) {
 
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST["delete"])) {
+        if ($_POST["delete"] === "delete") {
+            Utilisateur::deleteUser($_SESSION['user']['user_id']);
+            header("Location: controller-signin.php");
+            exit();
+        }
+    }
+}
+
 
     //modifer le profil
     // if ($_SERVER["REQUEST_METHOD"] == "POST") {

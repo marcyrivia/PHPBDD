@@ -38,6 +38,13 @@ form input[type="text"] {
     box-sizing: border-box;
 }
 
+.error {
+    color: red; /* Couleur du texte en rouge */
+    font-size: 14px; /* Taille de la police */
+    margin-top: 5px; /* Espacement en haut du message d'erreur */
+}
+
+
 form input[type="submit"] {
     width: 100%;
     background-color: #06BF09;
@@ -47,6 +54,28 @@ form input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+/* Style du bouton "Retour" */
+.retour {
+    background-color: red; /* Couleur de fond rouge */
+    color: white; /* Couleur du texte blanc */
+    padding: 10px 20px; /* Espacement intérieur */
+    border: none; /* Supprimer la bordure */
+    border-radius: 4px;
+    cursor: pointer; /* Curseur pointeur au survol */
+    transition: background-color 0.3s; /* Transition pour l'animation du hover */
+}
+
+/* Style du bouton "Retour" au survol */
+.retour:hover {
+    background-color: darkred; /* Couleur de fond plus foncée au survol */
 }
 
 form input[type="submit"]:hover {

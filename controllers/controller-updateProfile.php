@@ -14,7 +14,42 @@ if (!isset($_SESSION["user"])) {
   }
   
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+    // Vérification du fichier uploadé et autres traitements...
+
+    // Récupération des données du formulaire
+    $user_id = $_SESSION["user"]["user_id"];
+    $lastname = $_POST["lastname"];
+    $firstname = $_POST["firstname"];
+    $pseudo = $_POST["pseudo"];
+    $email = $_POST["email"];
+
+     // Tableau pour stocker les erreurs
+     $errors = [];
+
+     
+     
+     
+     
+     if (empty($_POST["pseudo"])) {
+      $errors["pseudo"] = "Champ obligatoire";
+  } else if (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
+      $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
+  }  else if (Utilisateur::checkPseudo($_POST["pseudo"]) && $_POST["pseudo"] != $_SESSION["user"]["user_pseudo"]) {
+      $errors["pseudo"] = 'Pseudo déjà utilisé';
+  }
+
+
+// Contrôle de l'email 
+  if (empty($_POST["email"])) {
+      $errors["email"] = "Champ obligatoire";
+  } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+      $errors["email"] = "Le format de l'adresse email n'est pas valide";
+  } else if (Utilisateur::checkEmail($_POST["email"]) && $_POST ["email"] != $_SESSION["user"]["user_email"]){
+      $errors["email"] = 'Adresse mail déjà utilisé';
+      var_dump("ok");
+  }
+
+
       
     if ($_FILES["User_Photo"]['error'] == 0) {
 
@@ -93,9 +128,10 @@ if (!isset($_SESSION["user"])) {
 
 
 
-    header ("Location: controller-profil.php");
+    // header ("Location: controller-profil.php");
     exit();
 }
+
 
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

@@ -220,6 +220,7 @@ class Utilisateur
             echo 'Erreur : ' . $e->getMessage();
             die();
         }
+        
     } public static function deleteUser(int $user_id)
     {
 

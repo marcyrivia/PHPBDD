@@ -81,18 +81,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Si aucune erreur détectée
     if (empty($errors)) {
         // Afficher la synthèse des informations et le message de confirmation
-        $nom = $_POST['firstname'];
-        $prenom = $_POST['lastname'];
-        $email = $_POST['email'];
-        $dob = $_POST['dob'];
+        // $nom = $_POST['firstname'];
+        // $prenom = $_POST['lastname'];
+        // $email = $_POST['email'];
+        // $dob = $_POST['dob'];
 
-        // Cacher le formulaire
-        $formHidden = true;
+        // // Cacher le formulaire
+        // $formHidden = true;
 
-        // Envoyer le mail de confirmation (simulation ici)
-        $message = "Bonjour $prenom $nom, votre inscription a bien été enregistrée.";
-        // Envoi du mail (à remplacer par votre code d'envoi de mail)
-        // mail($email, 'Confirmation d\'inscription', $message);
+        // // Envoyer le mail de confirmation (simulation ici)
+        // $message = "Bonjour $prenom $nom, votre inscription a bien été enregistrée.";
+        // // Envoi du mail (à remplacer par votre code d'envoi de mail)
+        // // mail($email, 'Confirmation d\'inscription', $message);
 
         // Afficher la synthèse des informations et le message de confirmation
         if (empty($errors)) {

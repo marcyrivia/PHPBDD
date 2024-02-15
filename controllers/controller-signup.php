@@ -45,13 +45,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $regexPseudo = '/^[a-zA-Z_\-\d]+$/';
     if (empty($_POST["pseudo"])) {
         $errors['pseudo'] = "Champs obligatoire.";
-    }
+    } else if (Utilisateur::checkPseudo($_POST["pseudo"])){
+            $errors['pseudo'] = "Ce pseudo existe déjà.";
+        } 
+    
 
     // Vérification de l'email
     if (empty($_POST["email"])) {
         $errors['email'] = "Champs obligatoire.";
-    } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    } else {
+        if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = "L'adresse email est invalide.";
+    } else if (Utilisateur::checkemail($_POST["email"])){
+        $errors['email'] = "Cette adresse mail existe déjà.";
+    } 
     }
 
     // Vérification de la date de naissance

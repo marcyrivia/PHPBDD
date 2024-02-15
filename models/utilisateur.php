@@ -95,6 +95,70 @@ class Utilisateur
         }
     }
 
+    public static function checkEmail($email)
+    {
+
+        try {
+
+            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
+            // Paramétrage des erreurs PDO pour les afficher en cas de problème
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+            $sql = "SELECT user_email FROM `userprofil` WHERE `user_email` = :email";
+
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
+
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':email', $email, PDO::PARAM_STR);
+
+            // on execute la requête
+            $query->execute();
+
+            // on récupère le résultat de la requête dans une variable
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+
+            // on vérifie si le résultat est vide car si c'est le cas, cela veut dire que le pseudo n'existe pas
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    } 
+
+    public static function checkPseudo($pseudo)
+    {
+
+        try {
+
+            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
+            // Paramétrage des erreurs PDO pour les afficher en cas de problème
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+            $sql = "SELECT user_pseudo FROM `userprofil` WHERE `user_pseudo` = :pseudo";
+
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
+
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+
+            // on execute la requête
+            $query->execute();
+
+            // on récupère le résultat de la requête dans une variable
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+
+            // on vérifie si le résultat est vide car si c'est le cas, cela veut dire que le pseudo n'existe pas
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
+
     /**
      * Méthode permettant de récupérer les informations d'un utilisateur avec son pseudo comme paramètre
      * 

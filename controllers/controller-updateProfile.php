@@ -30,24 +30,23 @@ if (!isset($_SESSION["user"])) {
      
      
      
-     if (empty($_POST["pseudo"])) {
-      $errors["pseudo"] = "Champ obligatoire";
-  } else if (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
-      $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
-  }  else if (Utilisateur::checkPseudo($_POST["pseudo"])) {
-      $errors["pseudo"] = 'Pseudo déjà utilisé';
-  }
-
-
-// Contrôle de l'email 
-  if (empty($_POST["email"])) {
-      $errors["email"] = "Champ obligatoire";
-  } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-      $errors["email"] = "Le format de l'adresse email n'est pas valide";
-  } else if (Utilisateur::checkEmail($_POST["email"])){
-      $errors["email"] = 'Adresse mail déjà utilisé';
-      var_dump("ok");
-  }
+     if (empty($_POST["pseudo"])){ 
+      $errors["pseudo"] = "Champ obligatoire"; 
+     } else if (!preg_match("/^[a-zA-ZA-y\d]+$/", $_POST["pseudo"])){
+         $errors ["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo"; 
+         } else if (Utilisateur::checkPseudo($_POST["pseudo"]) && $_POST["pseudo"]!= $_SESSION["user"]["user_pseudo"]){
+          $errors["pseudo"] = "Pseudo déjà utilisé"; 
+         }
+     
+     // Contrôle de l'email 
+     
+     $Serrors["email"] = "Champ obligatoire";
+    } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $Serrors["email"] = "Le format de l'adresse email n'est pas valide";
+    } else if (Utilisateur::checkEmail($_POST["email"]) && $_POST["email"] != $_SESSION["user"]["user_email"]) {
+        $Serrors["email"] = "Adresse mail déjà utilisée";
+        var_dump("ok");
+    }
 
 
       

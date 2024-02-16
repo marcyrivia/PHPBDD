@@ -53,6 +53,7 @@ if (!isset($_SESSION["user"])) {
       
     if ($_FILES["User_Photo"]['error'] == 0) {
 
+      ///ici
 
 
         $target_dir = "../assets/img/";

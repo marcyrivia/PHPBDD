@@ -245,6 +245,38 @@ class Utilisateur
         }
     }
 
+    public static function getAllUtilisateursJson(): string
+    {
+
+        try {
+            // Création d'un objet $db selon la classe PDO
+            $db = new PDO("mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS);
+
+            // stockage de ma requete dans une variable
+            $sql = "SELECT * FROM enterprise";
+
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
+
+            // on execute la requête
+            $query->execute();
+
+            // on récupère le résultat de la requête dans une variable $result
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            
+            // on ferme la connexion à la base de données
+            $db = null;
+            $json_result = json_encode($result);
+            // on retourne le résultat
+            return $json_result;
+        } catch (PDOException $e) {
+            // permet de récupérer le message d'erreur pour un debuggage plus facile
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
+
     // public static function addPhoto(int $user_id, string $profilepicture)
     // {
     //     try {

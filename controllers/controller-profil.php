@@ -1,12 +1,16 @@
 <?php
+session_start();
 
 require_once "../config/config.php";
 require_once "../models/utilisateur.php";
+require_once "../models/enterprise.php";
 require_once "../models/trajet.php";
 
-session_start();
+
+
 
 if (isset($_SESSION['user'])) {
+    $userjson =  json_decode(Utilisateur::getAllUtilisateursJson(), true);
     $user_id = $_SESSION['user']['user_id'];
     $id_enterprise = $_SESSION['user']['enterprise_id'];
     $profilepicture = $_SESSION['user']['user_photo'];

@@ -1,6 +1,12 @@
 <?php 
+
+
 session_start();
+require_once "../models/utilisateur.php";
+require_once "../config/config.php";
+
 if(isset($_SESSION["user"])){
+$userjson =  json_decode(Utilisateur::getAllUtilisateursJson(), true);
 $date = date('d F Y');
 $pseudo = $_SESSION['user']['user_pseudo'];
 // $defaultPic = $_SESSION['user']['user_default'];

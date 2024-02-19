@@ -41,7 +41,7 @@ if (!isset($_SESSION["user"])) {
      // Contrôle de l'email 
      
      $Serrors["email"] = "Champ obligatoire";
-    } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         $Serrors["email"] = "Le format de l'adresse email n'est pas valide";
     } else if (Utilisateur::checkEmail($_POST["email"]) && $_POST["email"] != $_SESSION["user"]["user_email"]) {
         $Serrors["email"] = "Adresse mail déjà utilisée";
@@ -72,11 +72,11 @@ if (!isset($_SESSION["user"])) {
           }
         }
     
-        // Check if file already exists
-        if (file_exists($target_file)) {
-          echo "Sorry, file already exists.";
-          $uploadOk = 0;
-        }
+        // // Check if file already exists
+        // if (file_exists($target_file)) {
+        //   echo "Sorry, file already exists.";
+        //   $uploadOk = 0;
+        // }
     
         // Check file size
         if ($_FILES["User_Photo"]["size"] > 500000) {
@@ -85,7 +85,7 @@ if (!isset($_SESSION["user"])) {
         }
     
         // Allow certain file formats
-        $allowedExtensions = array("jpg", "jpeg", "png", "gif");
+        $allowedExtensions = array("jpg", "jpeg", "png", "gif", "webp");
         if (!in_array($imageFileType, $allowedExtensions)) {
           echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
           $uploadOk = 0;
@@ -128,7 +128,7 @@ if (!isset($_SESSION["user"])) {
 
 
 
-    // header ("Location: controller-profil.php");
+    header ("Location: controller-profil.php");
     exit();
 }
 

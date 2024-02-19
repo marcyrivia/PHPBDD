@@ -21,8 +21,8 @@
             </div>
              <ul class="menu-list">
                 <li><a href="../controllers/controller-profil.php">Profil</a></li>
-                <li class="onglet-li"><a href="../controllers/controller-trajet.php">Créer un trajet</a></li>
-                <li class="onglet-li"><a href="../controllers/controller-historique.php">Historique</a></li>
+                <li ><a href="../controllers/controller-trajet.php">Créer un trajet</a></li>
+                <li ><a href="../controllers/controller-historique.php">Historique</a></li>
                 <li><a href="../controllers/controller-deconnect.php"> Deconnexion </a></li>
             </ul>
         </nav> 

@@ -12,6 +12,7 @@ if(!isset($_SESSION["user"])){
     header("location: ../controller/singin.php");
     exit();
 } else if (isset($_SESSION["user"])){
+    $userjson =  json_decode(trajet::getAllTrajetsJson(), true);
     $user_id = $_SESSION["user"]["user_id"];
     $trajets =  trajet::historique($user_id);
     // supprimer un trajet

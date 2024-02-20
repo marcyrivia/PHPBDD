@@ -14,8 +14,8 @@
     <p>Merci pour votre inscription !</p>
 
     <?php
-    echo "<p>Nom : $nom</p>";
-    echo "<p>Prénom : $prenom</p>";
+    echo "<p>Nom : $firstname</p>";
+    echo "<p>Prénom : $lastname </p>";
     echo "<p>Pseudo : $pseudo</p>";
     echo "<p>Email : $email</p>";
     echo "<p>Entreprise : $id_enterprise</p>";

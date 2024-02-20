@@ -43,14 +43,15 @@
 
         <!-- Affichage des erreurs de connexion -->
         <p><?= $errors["connexion"] ?? "" ?></p>
+        <p><?= $errors["ban"] ?? "" ?></p>
 
         <!-- Bouton de soumission -->
         <input type="submit" value="Se connecter">
     </form>
     <div class="popo">
-    <p class="signp">Créer un compte ? </p>
-<a href="../controllers/controller-signup.php"><input class="signin" type="submit" value="Créer un compte"> </input></a>
-</div>
+        <p class="signp">Créer un compte ? </p>
+        <a href="../controllers/controller-signup.php"><input class="signin" type="submit" value="Créer un compte"> </input></a>
+    </div>
     <!-- Footer -->
     <footer>
         <!-- Votre code pour le pied de page -->

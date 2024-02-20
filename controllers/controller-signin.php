@@ -29,16 +29,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // Récupération des informations de l'utilisateur via la méthode getInfos()
             $UtilisateurInfos = Utilisateur::getInfos($_POST['pseudo']);
+            if ($UtilisateurInfos["user_validate"] == 1) {
 
-            // Utilisation de password_verify pour valider le mot de passe
-            if (password_verify($_POST['password'], $UtilisateurInfos['user_password'])) {
-                $_SESSION["user"] = $UtilisateurInfos;
-                unset($_SESSION["user"]["user_password"]);
-                // Si la validation du mot de passe est réussie, redirection vers controller-home.php
-                header('Location: controller-home.php');
+                // Utilisation de password_verify pour valider le mot de passe
+                if (password_verify($_POST['password'], $UtilisateurInfos['user_password'])) {
+                    $_SESSION["user"] = $UtilisateurInfos;
+                    unset($_SESSION["user"]["user_password"]);
+                    // Si la validation du mot de passe est réussie, redirection vers controller-home.php
+                    header('Location: controller-home.php');
+                } else {
+                    // Sinon, ajout d'une erreur de connexion au tableau d'erreurs
+                    $errors['connexion'] = 'Mauvais mot de passe';
+                }
             } else {
-                // Sinon, ajout d'une erreur de connexion au tableau d'erreurs
-                $errors['connexion'] = 'Mauvais mot de passe';
+                $errors["ban"] = "votre compte à été banni pendant 30 jours";
             }
         }
     }
